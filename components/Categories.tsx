@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Box, HStack, Pressable } from "native-base";
 import { ScrollView, View } from "react-native";
 import { CategoryItem } from "./CategoryItem";
@@ -10,6 +10,8 @@ interface CategoriesProps {
 }
 
 export const Categories: React.FC<CategoriesProps> = ({dispatch, state}) => {
+    const [pressed, setPressed] = useState(false);
+
     const categorySelected = state.userPreferences.categorySelected;
 
     const handleCategoryPress = (category) => {
@@ -25,14 +27,11 @@ export const Categories: React.FC<CategoriesProps> = ({dispatch, state}) => {
     }
 
     return (
-        <Box marginY={2} marginX={2}>
+        <Box marginY={2}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                <HStack space={2}>
-                    {(getNewsCategories(state).length >= 1) && <Pressable onPress={() => handleCategoryPress('all')}  key="all">
-                        <CategoryItem>All</CategoryItem>
-                    </Pressable>}
-                    {getNewsCategories(state).map(el => <Pressable onPress={() => handleCategoryPress(el)}  key={el}
-                    data-category={el}><CategoryItem>{el}</CategoryItem></Pressable>)}
+                <HStack space={2} marginX={2}>
+                    {(getNewsCategories(state).length >= 1) && <CategoryItem onPress={() => handleCategoryPress('all')}  key="all">All</CategoryItem>}
+                    {getNewsCategories(state).map(el => <CategoryItem onPress={() => handleCategoryPress(el)}  key={el}>{el}</CategoryItem>)}
                 </HStack>
             </ScrollView>
         </Box>

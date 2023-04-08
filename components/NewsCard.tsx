@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
-import { Image, Text, Button, Box, Stack, VStack, Heading, AspectRatio } from "native-base";
-import styles from "../LearningAppStyles";
+import { Image, Text, Button, Box, Stack, VStack, Heading, AspectRatio, useTheme } from "native-base";
 
 interface NewsCardProps {
     title: string,
@@ -15,11 +13,13 @@ interface NewsCardProps {
 }
 
 export const NewsCard: React.FC<NewsCardProps> = (props) => {
-    const { title, imageSrc, pubDate, creator, description, link, navigation, text } = props
-    let imageUrl = formUrl(imageSrc);    
+    const { title, imageSrc, pubDate, creator, description, link, navigation, text } = props;
+    let imageUrl = formUrl(imageSrc);
+
+    const theme = useTheme();
         
     return (
-        <Box rounded="xl" borderColor="coolGray.200" borderWidth={1} overflow="hidden">
+        <Box variant="newsCardContainer">
             <VStack>
                 {imageSrc && <AspectRatio w="100%" ratio={16/9}>
                     <Image source={{ uri: `${imageUrl}` }} alt="image"/>
@@ -33,7 +33,9 @@ export const NewsCard: React.FC<NewsCardProps> = (props) => {
                                 <Text>{calculateElapsedTime(pubDate)}</Text>
                             </Stack>
                             <Text>{description}</Text>
-                            <Button borderRadius="2xl" onPress={() => navigation.navigate('NewsDetails', { title, text, imageUrl, link })} size="sm" colorScheme="info" w="30%">Read more</Button>
+                            <Button variant="infoButtonSmall" onPress={() => navigation.navigate('NewsDetails', { title, text, imageUrl, link, creator, pubDate: calculateElapsedTime(pubDate) })}>
+                                <Text variant="white">Read more</Text>
+                            </Button>
                         </Stack>
                     </Stack>
                 </Box>

@@ -1,24 +1,38 @@
 import React from "react";
-import { HStack, Box, Text, Select } from "native-base";
+import { HStack, Box, Text, Select, Heading, VStack } from "native-base";
 import { selectLanguage } from "../actions";
+
+interface LanguageItem {
+    label: string,
+    value: string
+}
 
 interface LanguageSelectionProps {
     dispatch: any,
-    languageSelected: string
+    languageSelected: string,
+    languageList: LanguageItem[]
 }
 
-export const LanguageSelection: React.FC<LanguageSelectionProps> = ({dispatch, languageSelected}) => {
+export const LanguageSelection: React.FC<LanguageSelectionProps> = ({dispatch, languageSelected, languageList}) => {
     
 
     return (
-        <HStack>
-            <Box pt="4" px="4">
-                <Text>News language</Text>                    
+        <VStack variant="settingsWrapper">
+            <Box px="4">
+                <Heading size="md">News language</Heading>                    
             </Box>
             <Box pt="4" px="4">
-                <Select accessibilityLabel="Choose language" placeholder="Choose language" w={160}
+                <Select accessibilityLabel="Choose language" placeholder="Choose language"
                 onValueChange={(itemValue) => dispatch(selectLanguage(itemValue))} selectedValue={languageSelected}>
-                    <Select.Item label="English" value="en"/>
+                    {languageList.map(languageItem => <Select.Item key={languageItem.value} label={languageItem.label} value={languageItem.value}/>)}
+                </Select>
+            </Box>
+        </VStack>
+    )
+}
+
+/*
+<Select.Item label="English" value="en"/>
                     <Select.Item label="Czech" value="cs"/>
                     <Select.Item label="French" value="fr"/>
                     <Select.Item label="German" value="de"/>
@@ -31,8 +45,4 @@ export const LanguageSelection: React.FC<LanguageSelectionProps> = ({dispatch, l
                     <Select.Item label="Swedish" value="sv"/>
                     <Select.Item label="Ukrainian" value="uk"/>
                     <Select.Item label="Czech" value="cs"/>
-                </Select>
-            </Box>
-        </HStack>
-    )
-}
+*/

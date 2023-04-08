@@ -2,6 +2,7 @@ import { AspectRatio, Box, Button, Heading, Image, NativeBaseProvider, Text, VSt
 import React from "react";
 import { Linking, SafeAreaView, ScrollView, View } from "react-native";
 import styles from "../LearningAppStyles";
+import { theme } from "../extendTheme";
 
 interface NewsDetailsProps {
     navigation: any,
@@ -9,21 +10,26 @@ interface NewsDetailsProps {
 }
 
 export const NewsDetails: React.FC<NewsDetailsProps> = ({navigation, route}) => {    
-    
+    const { title, imageUrl, text, link, creator, pubDate } = route.params;
+
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <ScrollView>
                 <View style={styles.container}>
-                    <NativeBaseProvider>
-                        <Box>
-                            <VStack>
-                                <Heading>{route.params.title}</Heading>
-                                {route.params.imageUrl && <AspectRatio width="100%" ratio={16/9}>
-                                    <Image source={{ uri: `${route.params.imageUrl}` }} alt="image"/>
+                    <NativeBaseProvider theme={theme}>
+                        <Box variant="articleContainer">
+                            <VStack space={4}>
+                                <Heading>{title}</Heading>
+                                {imageUrl && <AspectRatio width="100%" ratio={16/9}>
+                                    <Image source={{ uri: `${imageUrl}` }} alt="image" borderRadius="2xl"/>
                                 </AspectRatio>}
-                                <Text>{route.params.text}</Text>
-                                <Text></Text>
-                                <Button onPress={() => Linking.openURL(route.params.link)} borderRadius="2xl">Read on website</Button>
+                                <Text>{text}</Text>
+                                {creator && <Heading size="sm">By {creator}, published {pubDate}</Heading>}
+                                <Box variant="bottomBoxWrapper">
+                                    <Button onPress={() => Linking.openURL(link)} variant="infoButtonLarge">
+                                        <Text variant="infoButtonLargeText">Read on website</Text>
+                                    </Button>
+                                </Box>
                             </VStack>
                         </Box>
                     </NativeBaseProvider>

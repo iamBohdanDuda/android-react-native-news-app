@@ -1,14 +1,21 @@
 import React from "react";
-import { Box, Text } from "native-base";
+import { Button, Text } from "native-base";
 
 interface CategoryItemProps {
     children: any,
+    onPress: () => void
 }
 
-export const CategoryItem: React.FC<CategoryItemProps> = ({children}) => {
+export const CategoryItem: React.FC<CategoryItemProps> = ({children, onPress}) => {
     return (
-        <Box borderWidth={1} borderRadius="2xl" paddingY={1} paddingX={2}>
-            <Text fontSize="md">{children}</Text>
-        </Box>
+        <Button variant="categoryButton" onPress={onPress}>
+            <Text variant="white">{children}</Text>
+        </Button>
     )
 }
+
+/*
+<Box borderWidth={1} borderRadius="2xl" paddingY={1} paddingX={2}>
+            <Text fontSize="md">{children}</Text>
+        </Box>
+*/

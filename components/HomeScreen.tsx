@@ -13,14 +13,17 @@ import { NewsCard } from "./NewsCard";
 import { Categories } from "./Categories";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchNews } from "../actions";
+import { theme } from "../extendTheme";
 
 
 export const HomeScreen = ({navigation}) => {
     const [refreshing, setRefreshing] = useState(false);
-    const [orientation, setOrientation] = useState('');
 
     const state = useAppSelector(state => state);
     const posts = state.news.posts;
+    const isLoading = state.news.isLoading;
+    const isRefreshing = state.news.isRefreshing;
+    
     const languageSelected = state.userPreferences.languageSelected;
     const countrySelected = state.userPreferences.countrySelected;
     const categorySelected = state.userPreferences.categorySelected;
@@ -29,14 +32,9 @@ export const HomeScreen = ({navigation}) => {
 
 
     const onRefresh = () => {
-        setRefreshing(true);
         dispatch(fetchNews(languageSelected, countrySelected));
-        setTimeout(() => {
-            setRefreshing(false);
-        }, 2000);        
     }
 
-    
     console.log('next p ' + state.news.nextPage);
     console.log(state);
     
@@ -52,12 +50,12 @@ export const HomeScreen = ({navigation}) => {
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <ScrollView refreshControl={
-                <RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>
+                <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh}/>
             }>
                 <View style={styles.container}>
-                    <NativeBaseProvider>
+                    <NativeBaseProvider theme={theme}>
                         <Categories state={state} dispatch={dispatch}/>
-                        <Box marginX="10px">
+                        <Box variant="postsContainer">
                             <VStack space="4" divider={<Divider/>}>
                                 {posts.map(post => {
                                                         if (categorySelected.length) {                                                            
@@ -79,12 +77,11 @@ export const HomeScreen = ({navigation}) => {
                                                     })}
                             </VStack>
                         </Box>
-                        {(posts.length >= 1) && <Box alignItems="center" m={10}>
-                            <Button borderRadius="2xl" w="50%" colorScheme="info"  onPress={() => {                             
+                        {(posts.length >= 1) && <Box variant="bottomBoxWrapper">
+                            <Button isLoading={isLoading} variant="infoButtonLarge" onPress={() => {                             
                                 dispatch(fetchNews(languageSelected, countrySelected, state.news.nextPage));
                                 
-                                }}><Text color="white" fontSize="md" 
-                                    fontWeight="bold">Load More</Text>
+                                }}><Text variant="infoButtonLargeText">Load More</Text>
                             </Button>
                         </Box>}
                     </NativeBaseProvider>
@@ -94,18 +91,3 @@ export const HomeScreen = ({navigation}) => {
 
     )
 }
-
-/*<View style={styles.container}>
-                    <Text onPress={() => setOwnStyle(!ownStyle)} style={ownStyle ? styles.firstSentence : styles.secondSentence}>First sentence js</Text>
-                    <Text style={styles.secondSentence}>Second sentence js</Text>
-                    <Text style={styles.thirdSentence}>Third sentence js</Text>
-    </View>
-   
-    <Box borderRadius="md">
-                            <Button onPress={() => {                             
-                                dispatch(fetchNews())
-                                console.log(state);
-                                }}>Load News
-                            </Button>
-                        </Box>
-    */
