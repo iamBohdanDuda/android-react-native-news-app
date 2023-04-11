@@ -14,15 +14,15 @@ import { Categories } from "./Categories";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchNews } from "../actions";
 import { theme } from "../extendTheme";
+import { InternetConnectionAlert } from "./InternetConnectionAlert";
 
 
 export const HomeScreen = ({navigation}) => {
-    const [refreshing, setRefreshing] = useState(false);
-
     const state = useAppSelector(state => state);
     const posts = state.news.posts;
     const isLoading = state.news.isLoading;
     const isRefreshing = state.news.isRefreshing;
+    const connectionErrorAlertVisible = state.alerts.connectionErrorAlertVisible;
     
     const languageSelected = state.userPreferences.languageSelected;
     const countrySelected = state.userPreferences.countrySelected;
@@ -56,6 +56,7 @@ export const HomeScreen = ({navigation}) => {
                     <NativeBaseProvider theme={theme}>
                         <Categories state={state} dispatch={dispatch}/>
                         <Box variant="postsContainer">
+                            {connectionErrorAlertVisible && <InternetConnectionAlert/>}
                             <VStack space="4" divider={<Divider/>}>
                                 {posts.map(post => {
                                                         if (categorySelected.length) {                                                            

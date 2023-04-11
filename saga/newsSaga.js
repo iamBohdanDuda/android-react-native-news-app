@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { addPostsToBeginning, addPostsToEnd, changeNextPage, setLoadingToFalse, setLoadingToTrue, setRefreshingToFalse, setRefreshingToTrue } from '../actions';
+import { addPostsToBeginning, addPostsToEnd, changeNextPage, hideConnectionErrorAlert, setLoadingToFalse, setLoadingToTrue, setRefreshingToFalse, setRefreshingToTrue, showConnectionErrorAlert } from '../actions';
 import { FETCH_NEWS } from '../constants/actions';
 import { fetchNews } from './fetchNews';
 
@@ -20,6 +20,13 @@ function* fetchNewsWorker (action) {
         yield put(setLoadingToFalse());
     } catch (error) {
         console.log(error);
+        yield put(setRefreshingToFalse());
+        yield put(setLoadingToFalse());
+        if (error.message == 'Failed to fetch') {
+            yield put(showConnectionErrorAlert());
+            yield call(delay, 5000);
+            yield put(hideConnectionErrorAlert());
+        }
     }
 }
 
@@ -27,16 +34,6 @@ export function* fetchNewsWatcher () {
     yield takeEvery(FETCH_NEWS, fetchNewsWorker);
 }
 
-/*
-
-function* fetchNextPageWorker (action) {
-    try {
-        const json = yield call(fetchNextPage, action.payload);
-        yield put(addPost(json.results));
-        yield put(changeNextPage(json.nextPage));
-        yield console.log(json.nextPage);
-    } catch (error) {
-        console.log(error);
-    }
-}
-*/
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }

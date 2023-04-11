@@ -6,6 +6,7 @@ import { fetchNewsWatcher } from "../saga/newsSaga";
 import { userPreferencesReducer } from "./userPreferencesReducer";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { dataReducer } from "./dataReducer";
+import { alertsReducer } from "./alertsReducer";
 
 
 declare global {
@@ -16,7 +17,7 @@ declare global {
 
 const sagaMiddleware = createSagaMiddleware()
 
-export const rootReducer = combineReducers({news: newsReducer, userPreferences: userPreferencesReducer, data: dataReducer})
+export const rootReducer = combineReducers({news: newsReducer, userPreferences: userPreferencesReducer, data: dataReducer, alerts: alertsReducer})
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));

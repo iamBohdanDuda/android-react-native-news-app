@@ -1,6 +1,7 @@
 import { ADD_POSTS_TO_BEGINNING, ADD_POSTS_TO_END, CHANGE_NEXT_PAGE, DESELECT_CATEGORY, FETCH_NEWS, 
+        HIDE_CONNECTION_ERROR_ALERT, 
         SELECT_CATEGORY, SELECT_COUNTRY, SELECT_LANGUAGE, SET_LOADING_TO_FALSE, SET_LOADING_TO_TRUE, 
-        SET_REFRESHING_TO_FALSE, SET_REFRESHING_TO_TRUE } from "../constants/actions";
+        SET_REFRESHING_TO_FALSE, SET_REFRESHING_TO_TRUE, SHOW_CONNECTION_ERROR_ALERT } from "../constants/actions";
 
 export const setLoadingToTrue = () => {
     return {
@@ -71,10 +72,20 @@ export const selectLanguage = (payload) => {
         payload
     }
 }
-
 export const selectCountry = (payload) => {
     return {
         type: SELECT_COUNTRY,
         payload
+    }
+}
+
+export const showConnectionErrorAlert = () => {
+    return {
+        type: SHOW_CONNECTION_ERROR_ALERT
+    }
+}
+export const hideConnectionErrorAlert = () => {
+    return {
+        type: HIDE_CONNECTION_ERROR_ALERT
     }
 }

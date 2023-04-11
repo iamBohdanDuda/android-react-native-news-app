@@ -36,6 +36,20 @@ export const theme = extendTheme({
                     }
                 }
             },
+            Heading: {
+                variants: {
+                    headingContainer: {
+                        rounded: "3xl",
+                        bg: "gray.50",
+                        shadowColor: "#000",
+                        shadowOffset: { width: 0, height: 2 },
+                        elevation: 2,
+                        shadowOpacity: 1,
+                        shadowRadius: 4,
+                        p: 4
+                    }
+                }
+            },
             Text: {
                 variants: {
                     white: {
@@ -46,15 +60,31 @@ export const theme = extendTheme({
                         fontWeight: "bold",
                         fontSize: "md"
                     },
+                    paragraphContainer: {
+                        rounded: "3xl",
+                        bg: "gray.50",
+                        shadowColor: "#000",
+                        shadowOffset: { width: 0, height: 2 },
+                        elevation: 2,
+                        shadowOpacity: 1,
+                        shadowRadius: 4,
+                        p: 4
+                    }
                 }
             },
             Box: {
                 variants: {
                     newsCardContainer: {
-                        rounded: "xl",
+                        rounded: "3xl",
                         borderColor: "coolGray.200",
+                        bg: "gray.50",
                         borderWidth: 1,
-                        overflow: "hidden"
+                        overflow: "hidden",
+                        shadowColor: "#000",
+                        shadowOffset: { width: 0, height: 2 },
+                        elevation: 5,
+                        shadowOpacity: 1,
+                        shadowRadius: 4,
                     },
                     postsContainer: {
                         marginX: "10px"

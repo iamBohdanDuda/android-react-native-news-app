@@ -23,8 +23,8 @@ export const NewsDetails: React.FC<NewsDetailsProps> = ({navigation, route}) => 
                                 {imageUrl && <AspectRatio width="100%" ratio={16/9}>
                                     <Image source={{ uri: `${imageUrl}` }} alt="image" borderRadius="2xl"/>
                                 </AspectRatio>}
-                                <Text>{text}</Text>
-                                {creator && <Heading size="sm">By {creator}, published {pubDate}</Heading>}
+                                <Text variant="paragraphContainer">{text}</Text>
+                                {creator && <Heading variant="headingContainer" size="sm">By {creator}, published {pubDate}</Heading>}
                                 <Box variant="bottomBoxWrapper">
                                     <Button onPress={() => Linking.openURL(link)} variant="infoButtonLarge">
                                         <Text variant="infoButtonLargeText">Read on website</Text>
