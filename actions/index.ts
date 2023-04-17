@@ -10,6 +10,13 @@ import { AddPostsToBeginning,
         SetRefreshingToTrue } from "../store/types/news";
 import { DeselectCategory, SelectCategory, SelectCountry, SelectLanguage, UserPreferencesActionTypes } from "../store/types/userPreferences";
 
+interface FetchNews {
+    type: typeof FETCH_NEWS,
+    languageSelected: string, 
+    countrySelected: string, 
+    pageId: string | undefined
+}
+
 export const setLoadingToTrue = (): SetLoadingToTrue => {
     return {
         type: NewsActionTypes.SET_LOADING_TO_TRUE
@@ -46,7 +53,7 @@ export const addPostsToEnd = (payload: any): AddPostsToEnd => {
 
 export const fetchNews = (languageSelected: string, 
                             countrySelected: string, 
-                            pageId: string | undefined = undefined) => {
+                            pageId: string | undefined = undefined): FetchNews => {
     return {
         type: FETCH_NEWS,
         languageSelected,

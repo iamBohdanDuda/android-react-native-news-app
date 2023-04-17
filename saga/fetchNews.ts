@@ -1,6 +1,6 @@
 import { apikey } from "../constants/apikey";
 
-export const fetchNews = (languageSelected, countrySelected, pageId = undefined) => {
+export const fetchNews = (languageSelected: string, countrySelected: string, pageId: string | undefined = undefined) => {
     let country = '';
     countrySelected === 'ww' ? country = '' : country = `&country=${countrySelected}`;
     console.log(`https://newsdata.io/api/1/news?apikey=${apikey}${country}&language=${languageSelected}`);

@@ -2,8 +2,15 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 import { addPostsToBeginning, addPostsToEnd, changeNextPage, hideConnectionErrorAlert, setLoadingToFalse, setLoadingToTrue, setRefreshingToFalse, setRefreshingToTrue, showConnectionErrorAlert } from '../actions';
 import { FETCH_NEWS } from '../constants/actions';
 import { fetchNews } from './fetchNews';
+import { Action } from 'redux';
 
-function* fetchNewsWorker (action) {
+interface FetchNews {
+    languageSelected: string, 
+    countrySelected: string, 
+    pageId: string | undefined
+}
+
+function* fetchNewsWorker (action: Action & FetchNews) {
     try {
         let json;
         if (action.pageId) {
