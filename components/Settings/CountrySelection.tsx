@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Select, Heading, VStack } from "native-base";
-import { selectCountry } from "../actions";
+import { selectCountry } from "../../actions";
 
 interface CountryItem {
     label: string,

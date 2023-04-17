@@ -1,11 +1,11 @@
 import React from "react";
 import { NativeBaseProvider, VStack, Divider } from "native-base";
 import { SafeAreaView, View } from "react-native";
-import styles from "../LearningAppStyles";
+import styles from "../../LearningAppStyles";
 import { CountrySelection } from "./CountrySelection";
 import { LanguageSelection } from "./LanguageSelection";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { theme } from "../extendTheme";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { theme } from "../../extendTheme";
 
 
 

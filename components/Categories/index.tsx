@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, HStack } from "native-base";
 import { ScrollView } from "react-native";
 import { CategoryItem } from "./CategoryItem";
-import { deselectCategory, selectCategory } from "../actions";
+import { deselectCategory, selectCategory } from "../../actions";
 
 interface CategoriesProps {
     dispatch: any,

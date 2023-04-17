@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Select, Heading, VStack } from "native-base";
-import { selectLanguage } from "../actions";
+import { selectLanguage } from "../../actions";
 
 interface LanguageItem {
     label: string,
