@@ -1,5 +1,5 @@
 import React from "react";
-import { HStack, Box, Text, Select, Heading, VStack } from "native-base";
+import { Box, Select, Heading, VStack } from "native-base";
 import { selectLanguage } from "../actions";
 
 interface LanguageItem {

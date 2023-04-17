@@ -1,14 +1,15 @@
-import { HIDE_CONNECTION_ERROR_ALERT, SHOW_CONNECTION_ERROR_ALERT } from "../constants/actions";
+import { AlertsAction, AlertsActionTypes, AlertsState } from "./types/alerts";
 
-const initialState = {
+
+const initialState: AlertsState = {
     connectionErrorAlertVisible: false
 }
 
-export const alertsReducer = (state = initialState, action) => {
+export const alertsReducer = (state = initialState, action: AlertsAction): AlertsState => {
     switch (action.type) {
-        case SHOW_CONNECTION_ERROR_ALERT:
+        case AlertsActionTypes.SHOW_CONNECTION_ERROR_ALERT:
             return {...state, connectionErrorAlertVisible: true};
-        case HIDE_CONNECTION_ERROR_ALERT:
+        case AlertsActionTypes.HIDE_CONNECTION_ERROR_ALERT:
             return {...state, connectionErrorAlertVisible: false};
         default:
             return state;

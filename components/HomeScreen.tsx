@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { 
     SafeAreaView,
     View,
@@ -6,9 +6,7 @@ import {
     RefreshControl
 } from "react-native";
 import styles from "../LearningAppStyles";
-import { useState } from "react";
 import { NativeBaseProvider, Button, Text, VStack, Box, Divider } from "native-base";
-import { useWindowDimensions, Dimensions, Platform } from "react-native";
 import { NewsCard } from "./NewsCard";
 import { Categories } from "./Categories";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
@@ -23,6 +21,7 @@ export const HomeScreen = ({navigation}) => {
     const isLoading = state.news.isLoading;
     const isRefreshing = state.news.isRefreshing;
     const connectionErrorAlertVisible = state.alerts.connectionErrorAlertVisible;
+    const nextPage = state.news.nextPage;
     
     const languageSelected = state.userPreferences.languageSelected;
     const countrySelected = state.userPreferences.countrySelected;
@@ -38,13 +37,6 @@ export const HomeScreen = ({navigation}) => {
     console.log('next p ' + state.news.nextPage);
     console.log(state);
     
-    
-
-    const screen = Dimensions.get('screen');
-    const window = Dimensions.get('window');
-
-    const { height, width } = useWindowDimensions();
-
     let key = 1;
 
     return (
@@ -80,7 +72,7 @@ export const HomeScreen = ({navigation}) => {
                         </Box>
                         {(posts.length >= 1) && <Box variant="bottomBoxWrapper">
                             <Button isLoading={isLoading} variant="infoButtonLarge" onPress={() => {                             
-                                dispatch(fetchNews(languageSelected, countrySelected, state.news.nextPage));
+                                dispatch(fetchNews(languageSelected, countrySelected, nextPage));
                                 
                                 }}><Text variant="infoButtonLargeText">Load More</Text>
                             </Button>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, NativeBaseProvider, Text, HStack, Select, Button, extendTheme, VStack, Divider } from "native-base";
+import { NativeBaseProvider, VStack, Divider } from "native-base";
 import { SafeAreaView, View } from "react-native";
 import styles from "../LearningAppStyles";
 import { CountrySelection } from "./CountrySelection";

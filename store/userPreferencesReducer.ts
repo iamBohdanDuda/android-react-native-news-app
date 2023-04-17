@@ -1,22 +1,22 @@
-import { DESELECT_CATEGORY, SELECT_CATEGORY, SELECT_COUNTRY, SELECT_LANGUAGE } from "../constants/actions";
+import { UserPreferencesAction, UserPreferencesActionTypes, UserPreferencesState } from "./types/userPreferences";
 
-const initialState = {
+const initialState: UserPreferencesState = {
     categorySelected: '',
     languageSelected: 'en',
     countrySelected: 'ww'
 }
 
-export const userPreferencesReducer = (state = initialState, action) => {
+export const userPreferencesReducer = (state = initialState, action: UserPreferencesAction): UserPreferencesState => {
     switch (action.type) {
-        case SELECT_CATEGORY:
+        case UserPreferencesActionTypes.SELECT_CATEGORY:
             return {...state, categorySelected: action.payload};
-        case DESELECT_CATEGORY:
+        case UserPreferencesActionTypes.DESELECT_CATEGORY:
             return {...state, categorySelected: ''};
 
-        case SELECT_LANGUAGE:
+        case UserPreferencesActionTypes.SELECT_LANGUAGE:
             return {...state, languageSelected: action.payload};
         
-        case SELECT_COUNTRY:
+        case UserPreferencesActionTypes.SELECT_COUNTRY:
             return {...state, countrySelected: action.payload};
 
         default:

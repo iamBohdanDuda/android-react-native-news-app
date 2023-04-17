@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image, Text, Button, Box, Stack, VStack, Heading, AspectRatio, useTheme } from "native-base";
 
 interface NewsCardProps {

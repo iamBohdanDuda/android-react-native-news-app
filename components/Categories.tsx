@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
-import { Box, HStack, Pressable } from "native-base";
-import { ScrollView, View } from "react-native";
+import React, { useState } from "react";
+import { Box, HStack } from "native-base";
+import { ScrollView } from "react-native";
 import { CategoryItem } from "./CategoryItem";
 import { deselectCategory, selectCategory } from "../actions";
 

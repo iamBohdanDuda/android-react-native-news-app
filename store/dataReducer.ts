@@ -1,4 +1,6 @@
-const initialState = {
+import { DataState } from "./types/data";
+
+const initialState: DataState = {
     counriesList: [
         { label: "Worldwide", value: "ww" },
         { label: "Australia", value: "au" },
@@ -44,7 +46,7 @@ const initialState = {
       ]
 }
 
-export const dataReducer = (state = initialState, action) => {
+export const dataReducer = (state = initialState, action): DataState => {
     switch (action.type) {
         default:
             return state;
