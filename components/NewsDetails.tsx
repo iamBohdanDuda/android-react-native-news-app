@@ -1,7 +1,7 @@
 import { AspectRatio, Box, Button, Heading, Image, NativeBaseProvider, Text, VStack } from "native-base";
 import React from "react";
 import { Linking, SafeAreaView, ScrollView, View } from "react-native";
-import styles from "../LearningAppStyles";
+import styles from "../AppStyles";
 import { theme } from "../extendTheme";
 
 interface NewsDetailsProps {

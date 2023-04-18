@@ -4,7 +4,7 @@ import {
     ScrollView,
     View
 } from "react-native";
-import styles from "../LearningAppStyles";
+import styles from "../AppStyles";
 import { NativeBaseProvider, Text, Button, Box, Image } from "native-base";
 import { launchImageLibrary, launchCamera, MediaType } from "react-native-image-picker";
 import { PermissionsAndroid } from "react-native";

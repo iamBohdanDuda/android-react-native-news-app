@@ -5,7 +5,7 @@ import {
     ScrollView,
     RefreshControl
 } from "react-native";
-import styles from "../LearningAppStyles";
+import styles from "../AppStyles";
 import { NativeBaseProvider, Button, Text, VStack, Box, Divider } from "native-base";
 import { NewsCard } from "./NewsCard";
 import { Categories } from "./Categories";
