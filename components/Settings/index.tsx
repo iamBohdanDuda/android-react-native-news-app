@@ -11,11 +11,8 @@ import { theme } from "../../extendTheme";
 
 export const Settings: React.FC = () => {
     const state = useAppSelector(state => state);
-    const countriesList = state.data.counriesList;    
-    const languageList = state.data.languagesList;
-    const userPreferences = state.userPreferences;
-    const languageSelected = userPreferences.languageSelected;
-    const countrySelected = userPreferences.countrySelected;
+    const { counriesList, languagesList } = state.data;
+    const { languageSelected, countrySelected } = state.userPreferences;
 
     const dispatch = useAppDispatch();
 
@@ -24,8 +21,8 @@ export const Settings: React.FC = () => {
             <View style={styles.container}>
                 <NativeBaseProvider theme={theme}>
                     <VStack space={4} divider={<Divider/>}>
-                        <LanguageSelection dispatch={dispatch} languageSelected={languageSelected} languageList={languageList}/>
-                        <CountrySelection dispatch={dispatch} countrySelected={countrySelected} countriesList={countriesList}/>
+                        <LanguageSelection dispatch={dispatch} languageSelected={languageSelected} languageList={languagesList}/>
+                        <CountrySelection dispatch={dispatch} countrySelected={countrySelected} countriesList={counriesList}/>
                     </VStack>
                 </NativeBaseProvider>
             </View>

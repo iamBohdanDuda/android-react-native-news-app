@@ -2,6 +2,7 @@ import { UserPreferencesAction, UserPreferencesActionTypes, UserPreferencesState
 
 const initialState: UserPreferencesState = {
     categorySelected: '',
+    searchCategorySelected: '',
     languageSelected: 'en',
     countrySelected: 'ww'
 }
@@ -12,6 +13,11 @@ export const userPreferencesReducer = (state = initialState, action: UserPrefere
             return {...state, categorySelected: action.payload};
         case UserPreferencesActionTypes.DESELECT_CATEGORY:
             return {...state, categorySelected: ''};
+
+        case UserPreferencesActionTypes.SELECT_SEARCH_CATEGORY:
+            return {...state, searchCategorySelected: action.payload};
+        case UserPreferencesActionTypes.DESELECT_SEARCH_CATEGORY:
+            return {...state, searchCategorySelected: ''};
 
         case UserPreferencesActionTypes.SELECT_LANGUAGE:
             return {...state, languageSelected: action.payload};

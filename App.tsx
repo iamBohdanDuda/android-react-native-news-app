@@ -1,6 +1,6 @@
 import React from "react";
 import { HomeScreen } from "./components/HomeScreen";
-import { Details } from "./components/Details";
+import { Details } from "./components/Camera/Details";
 import { Settings } from "./components/Settings";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import { store } from "./store";
 import { NewsDetails } from "./components/NewsDetails";
 import Ionicons from "react-native-vector-icons/Ionicons"
+import { Search } from "./components/Search";
 
 
 const Tabs = () => {
@@ -25,12 +26,16 @@ const Tabs = () => {
                 else if (route.name === 'Settings') {
                     iconName = focused ? 'cog' : 'cog-outline';
                 }
+                else if (route.name === 'Search') {
+                    iconName = focused ? 'search' : 'search-outline';
+                }
 
                 return <Ionicons name={iconName} size={size} color={color}></Ionicons>
             },
             headerTitleAlign: "center"
         })}>
             <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
+            <Tab.Screen name="Search" component={Search}></Tab.Screen>
             <Tab.Screen name="Settings" component={Settings}></Tab.Screen>
         </Tab.Navigator>
     )

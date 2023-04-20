@@ -15,8 +15,6 @@ interface NewsCardProps {
 export const NewsCard: React.FC<NewsCardProps> = (props) => {
     const { title, imageSrc, pubDate, creator, description, link, navigation, text } = props;
     let imageUrl = formUrl(imageSrc);
-
-    const theme = useTheme();
         
     return (
         <Box variant="newsCardContainer">
