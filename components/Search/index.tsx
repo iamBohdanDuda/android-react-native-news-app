@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import styles from "../../AppStyles";
-import { Box, Button, DeleteIcon, Divider, FormControl, HStack, Heading, Icon, Input, NativeBaseProvider, Pressable, Text, VStack } from "native-base";
-import Ionicons from "react-native-vector-icons/Ionicons"
+import { NativeBaseProvider } from "native-base";
 import { SearchInput } from "./SearchInput";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { InternetConnectionAlert } from "../Alerts/InternetConnectionAlert";
-import { NewsCard } from "../NewsCard";
 import { theme } from "../../extendTheme";
-import { deselectSearchCategory, fetchNews, selectSearchCategory } from "../../actions";
+import { deselectSearchCategory, selectSearchCategory } from "../../actions";
 import { Results } from "../Results";
 import { Categories } from "../Categories";
 import { LoadMoreButton } from "../Buttons/LoadMoreButton";

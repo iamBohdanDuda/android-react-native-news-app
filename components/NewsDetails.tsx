@@ -19,7 +19,7 @@ export const NewsDetails: React.FC<NewsDetailsProps> = ({navigation, route}) => 
                     <NativeBaseProvider theme={theme}>
                         <Box variant="articleContainer">
                             <VStack space={4}>
-                                <Heading>{title}</Heading>
+                                <Heading variant="headingContainer">{title}</Heading>
                                 {imageUrl && <AspectRatio width="100%" ratio={16/9}>
                                     <Image source={{ uri: `${imageUrl}` }} alt="image" borderRadius="2xl"/>
                                 </AspectRatio>}

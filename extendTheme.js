@@ -101,7 +101,7 @@ export const theme = extendTheme({
                         marginX: "10px"
                     },
                     articleContainer: {
-                        margin: "10px"
+                        margin: "10px",
                     },
                     bottomBoxWrapper: {
                         alignItems: "center",

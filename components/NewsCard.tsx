@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Text, Button, Box, Stack, VStack, Heading, AspectRatio, useTheme } from "native-base";
+import { Image, Text, Button, Box, Stack, VStack, Heading, AspectRatio } from "native-base";
 
 interface NewsCardProps {
     title: string,

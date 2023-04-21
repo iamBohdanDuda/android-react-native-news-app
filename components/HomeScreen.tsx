@@ -14,8 +14,11 @@ import { theme } from "../extendTheme";
 import { LoadMoreButton } from "./Buttons/LoadMoreButton";
 import { Results } from "./Results";
 
+interface HomeScreenProps {
+    navigation: any
+}
 
-export const HomeScreen = ({navigation}) => {
+export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     const state = useAppSelector(state => state);
     const { connectionErrorAlertVisible } = state.alerts;
     const { posts, isLoading, isRefreshing, nextPage } = state.news;

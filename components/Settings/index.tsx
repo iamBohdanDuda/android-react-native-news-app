@@ -1,5 +1,5 @@
 import React from "react";
-import { NativeBaseProvider, VStack, Divider } from "native-base";
+import { NativeBaseProvider, VStack } from "native-base";
 import { SafeAreaView, View } from "react-native";
 import styles from "../../AppStyles";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
