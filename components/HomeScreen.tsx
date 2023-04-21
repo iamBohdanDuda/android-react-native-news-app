@@ -11,7 +11,7 @@ import { Categories } from "./Categories";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { deselectCategory, fetchNews, selectCategory } from "../actions";
 import { theme } from "../extendTheme";
-import { LoadMoreButton } from "./LoadMoreButton";
+import { LoadMoreButton } from "./Buttons/LoadMoreButton";
 import { Results } from "./Results";
 
 

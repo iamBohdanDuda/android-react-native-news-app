@@ -1,7 +1,7 @@
 import { HStack, Icon, Input, Pressable } from "native-base";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import React, { useState } from "react";
-import { fetchNews } from "../actions";
+import { fetchNews } from "../../actions";
 
 interface SearchInputProps {
     dispatch: any,
@@ -32,6 +32,6 @@ export const SearchInput: React.FC<SearchInputProps> = ({dispatch, countrySelect
                     <Icon size={5} as={<Ionicons name="search-outline"></Ionicons>}></Icon>
                 </Pressable>
             </HStack>
-        } m={2} rounded="3xl" placeholder="Find out what is happening in the world"/>
+        } variant="roundedInput" placeholder="Start typing here"/>
     )
 }

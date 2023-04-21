@@ -2,6 +2,16 @@ import { extendTheme } from "native-base";
 
 export const theme = extendTheme({
         components: {
+            
+            Input: {
+                variants: {
+                    roundedInput: {
+                        m: 2,
+                        rounded: "3xl",
+                        borderWidth: 1
+                    }
+                }
+            },
             Button: {
                 baseStyle: {
                     rounded: "2xl",
@@ -47,7 +57,8 @@ export const theme = extendTheme({
                         shadowOpacity: 1,
                         shadowRadius: 4,
                         p: 4
-                    }
+                    },
+                    
                 }
             },
             Text: {
@@ -95,6 +106,13 @@ export const theme = extendTheme({
                     bottomBoxWrapper: {
                         alignItems: "center",
                         m: 10
+                    },
+                    settingsHeadingWrapper: {
+                        px: "4"
+                    },
+                    settingsSelectWrapper: {
+                        pt: "4",
+                        px: "4"
                     }
                 }
             },

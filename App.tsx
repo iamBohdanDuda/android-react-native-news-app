@@ -55,23 +55,4 @@ export const App = () => {
             </NavigationContainer>
         </Provider>
     )
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*<View style={styles.container}>
-                    <Text onPress={() => setOwnStyle(!ownStyle)} style={ownStyle ? styles.firstSentence : styles.secondSentence}>First sentence js</Text>
-                    <Text style={styles.secondSentence}>Second sentence js</Text>
-                    <Text style={styles.thirdSentence}>Third sentence js</Text>
-    </View>*/
+};

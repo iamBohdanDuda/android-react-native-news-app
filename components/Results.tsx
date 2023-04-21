@@ -1,6 +1,6 @@
 import { Box, Divider, VStack } from "native-base";
 import React from "react";
-import { InternetConnectionAlert } from "./InternetConnectionAlert";
+import { InternetConnectionAlert } from "./Alerts/InternetConnectionAlert";
 import { NewsCard } from "./NewsCard";
 
 interface NewsPost {

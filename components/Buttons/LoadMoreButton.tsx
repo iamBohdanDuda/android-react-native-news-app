@@ -1,6 +1,6 @@
 import { Box, Button, Text } from "native-base";
 import React from "react";
-import { fetchNews } from "../actions";
+import { fetchNews } from "../../actions";
 
 interface LoadMoreButtonProps {
     posts: any[],
