@@ -1,5 +1,5 @@
 import React from "react";
-import { NativeBaseProvider, VStack } from "native-base";
+import { NativeBaseProvider, Select, VStack } from "native-base";
 import { SafeAreaView, View } from "react-native";
 import styles from "../../AppStyles";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
@@ -21,10 +21,16 @@ export const Settings: React.FC = () => {
             <View style={styles.container}>
                 <NativeBaseProvider theme={theme}>
                     <VStack space={4}>
-                        <Selection dispatch={dispatch} selectionList={languagesList} valueSelected={languageSelected}
-                                    onSelectHandler={selectLanguage}>News language</Selection>
-                        <Selection dispatch={dispatch} selectionList={counriesList} valueSelected={countrySelected}
-                                    onSelectHandler={selectCountry}>Country of origin of the news</Selection>
+                        <Selection selectionList={languagesList} valueSelected={languageSelected}
+                                    onSelectHandler={(itemValue) => dispatch(selectLanguage(itemValue))} placeholder="Choose language"
+                                    renderItem={countriesItem => <Select.Item key={countriesItem.value} label={countriesItem.label} 
+                                                                                value={countriesItem.value}/>}
+                                    >News language</Selection>
+                        <Selection selectionList={counriesList} valueSelected={countrySelected}
+                                    onSelectHandler={(itemValue) => dispatch(selectCountry(itemValue))} placeholder="Choose country"
+                                    renderItem={countriesItem => <Select.Item key={countriesItem.value} label={countriesItem.label} 
+                                                                                value={countriesItem.value}/>}
+                                    >Country of origin of the news</Selection>
                     </VStack>
                 </NativeBaseProvider>
             </View>

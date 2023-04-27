@@ -1,29 +1,27 @@
 import React from "react";
 import { Box, Select, Heading, VStack } from "native-base";
 
-interface SelectionItem {
-    label: string,
-    value: string
-}
-
-interface CountrySelectionProps {
-    dispatch: any,
+interface CountrySelectionProps<T> {
     valueSelected: string,
-    selectionList: SelectionItem[],
+    selectionList: T[],
+    placeholder: string,
+    renderItem: (item: T) => React.ReactNode,
     children: React.ReactNode,
     onSelectHandler: (value: string) => void
 }
 
-export const Selection: React.FC<CountrySelectionProps> = ({dispatch, valueSelected, selectionList, children, onSelectHandler}) => {
+export function Selection<T> (props: CountrySelectionProps<T>) {
+    const {valueSelected, selectionList, placeholder, children, onSelectHandler, renderItem} = props;
+
     return (
         <VStack variant="settingsWrapper">
             <Box variant="settingsHeadingWrapper">
                 <Heading size="md">{children}</Heading>                
             </Box>
             <Box variant="settingsSelectWrapper">
-                <Select placeholder="Choose country" accessibilityLabel="Choose country"
-                onValueChange={(itemValue) => dispatch(onSelectHandler(itemValue))} selectedValue={valueSelected}>
-                    {selectionList.map(countriesItem => <Select.Item key={countriesItem.value} label={countriesItem.label} value={countriesItem.value}/>)}
+                <Select placeholder={placeholder} accessibilityLabel="Choose country"
+                onValueChange={(itemValue) => onSelectHandler(itemValue)} selectedValue={valueSelected}>
+                    {selectionList.map(renderItem)}
                 </Select>
             </Box>
         </VStack>
