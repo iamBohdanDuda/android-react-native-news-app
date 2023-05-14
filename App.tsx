@@ -5,8 +5,9 @@ import { Settings } from "./components/Settings";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Provider } from 'react-redux'
-import { store } from "./store";
+import { Provider } from 'react-redux';
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./store";
 import { NewsDetails } from "./components/NewsDetails";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import { Search } from "./components/Search";
@@ -46,13 +47,15 @@ export const App = () => {
 
     return (
         <Provider store={store}>
-            <NavigationContainer>
-                <Stack.Navigator screenOptions={{headerTitleStyle: { fontWeight: "bold"}}}>
-                    <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }}/>
-                    <Stack.Screen name="NewsDetails" component={NewsDetails} options={{title: "Details"}}/>
-                    <Stack.Screen name="Details" component={Details}/>
-                </Stack.Navigator>
-            </NavigationContainer>
+            <PersistGate persistor={persistor}>
+                <NavigationContainer>
+                    <Stack.Navigator screenOptions={{headerTitleStyle: { fontWeight: "bold"}}}>
+                        <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }}/>
+                        <Stack.Screen name="NewsDetails" component={NewsDetails} options={{title: "Details"}}/>
+                        <Stack.Screen name="Details" component={Details}/>
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </PersistGate>
         </Provider>
     )
 };

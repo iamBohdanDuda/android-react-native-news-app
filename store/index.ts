@@ -7,6 +7,9 @@ import { userPreferencesReducer } from "./userPreferencesReducer";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { dataReducer } from "./dataReducer";
 import { alertsReducer } from "./alertsReducer";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import storage from "redux-persist/lib/storage";
+import { persistStore, persistReducer } from 'redux-persist';
 
 
 declare global {
@@ -15,12 +18,20 @@ declare global {
     }
   }
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
+
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage
+}
 
 export const rootReducer = combineReducers({news: newsReducer, userPreferences: userPreferencesReducer, data: dataReducer, alerts: alertsReducer})
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+export const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+export const persistor = persistStore(store);
 
 
 sagaMiddleware.run(fetchNewsWatcher)

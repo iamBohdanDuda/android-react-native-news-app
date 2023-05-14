@@ -1,5 +1,17 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { addPostsToBeginning, addPostsToEnd, addSearchResultsToBeginning, addSearchResultsToEnd, changeNextPage, changeNextPageForSearchResults, clearSearchResults, hideConnectionErrorAlert, setLoadingToFalse, setLoadingToTrue, setRefreshingToFalse, setRefreshingToTrue, showConnectionErrorAlert } from '../actions';
+import { addPostsToBeginning, 
+        addPostsToEnd, 
+        addSearchResultsToBeginning, 
+        addSearchResultsToEnd, 
+        changeNextPage, 
+        changeNextPageForSearchResults, 
+        clearSearchResults, 
+        hideConnectionErrorAlert, 
+        setLoadingToFalse, 
+        setLoadingToTrue, 
+        setRefreshingToFalse, 
+        setRefreshingToTrue, 
+        showConnectionErrorAlert } from '../actions';
 import { FETCH_NEWS } from '../constants/actions';
 import { fetchNews } from './fetchNews';
 import { Action } from 'redux';

@@ -12,7 +12,13 @@ import { AddPostsToBeginning,
         SetLoadingToTrue, 
         SetRefreshingToFalse, 
         SetRefreshingToTrue } from "../store/types/news";
-import { DeselectCategory, DeselectSearchCategory, SelectCategory, SelectCountry, SelectLanguage, SelectSearchCategory, UserPreferencesActionTypes } from "../store/types/userPreferences";
+import { DeselectCategory, 
+        DeselectSearchCategory, 
+        SelectCategory, 
+        SelectCountry, 
+        SelectLanguage, 
+        SelectSearchCategory, 
+        UserPreferencesActionTypes } from "../store/types/userPreferences";
 
 interface FetchNews {
     type: typeof FETCH_NEWS,
