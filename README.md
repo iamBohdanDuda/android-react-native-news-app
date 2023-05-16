@@ -8,4 +8,4 @@ Due to API limitation app can send only 200 fetch requests per day.
 
 ## Known Isues
 
-Needs load spinner in Search Tab, expected to be added soon.
+Needs connection error warning to be added.
