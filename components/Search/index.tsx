@@ -9,6 +9,7 @@ import { deselectSearchCategory, selectSearchCategory } from "../../actions";
 import { Results } from "../Results";
 import { Categories } from "../Categories";
 import { LoadMoreButton } from "../Buttons/LoadMoreButton";
+import { InternetConnectionAlert } from "../Alerts/InternetConnectionAlert";
 
 interface SearchProps {
     navigation: any
@@ -31,7 +32,8 @@ export const Search: React.FC<SearchProps> = ({navigation}) => {
             <ScrollView>
                 <View style={styles.container}>
                     <NativeBaseProvider theme={theme}>
-                        <SearchInput queryChangeHandler={queryChangeHandler} dispatch={dispatch} countrySelected={countrySelected} languageSelected={languageSelected}/>
+                        <SearchInput queryChangeHandler={queryChangeHandler} dispatch={dispatch} countrySelected={countrySelected} 
+                                    languageSelected={languageSelected} isLoading={isLoading}/>
                         <Categories dispatch={dispatch} posts={searchPagePosts} currentCategorySelected={searchCategorySelected}
                                     onSelect={selectSearchCategory} onDeselect={deselectSearchCategory}/>
                         <Results navigation={navigation} connectionErrorAlertVisible={connectionErrorAlertVisible}

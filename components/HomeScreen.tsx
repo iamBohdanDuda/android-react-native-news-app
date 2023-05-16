@@ -30,7 +30,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         dispatch(fetchNews(languageSelected, countrySelected));
     }
 
-    console.log('next p ' + state.news.nextPage);
     console.log(state);
     
     return (

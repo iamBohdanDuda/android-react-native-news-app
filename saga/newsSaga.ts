@@ -41,6 +41,7 @@ function* fetchNewsWorker (action: Action & FetchNews) {
             }
         } else {
             if (action.query) {
+                yield put(setLoadingToTrue());
                 json = yield call(fetchNews, action.languageSelected, action.countrySelected, action.pageId, action.query);
                 yield put(clearSearchResults());
                 yield put(addSearchResultsToBeginning(json.results));
